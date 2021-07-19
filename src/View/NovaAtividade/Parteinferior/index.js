@@ -1,17 +1,9 @@
 import React, {useState}from 'react';
-import { StyleSheet, Text, View,Button,Alert,image} from 'react-native';
-import {Poppins_700Bold,useFonts} from '@expo-google-fonts/poppins'
+import { StyleSheet, Text, View,Button,Alert,Image} from 'react-native';
 
 export default function BoxInferior() {
   const[ligado,setLigado]=useState(true)
 
-  const [loaded] = useFonts({
-    Poppins_700Bold: require('../../../../node_modules/@expo-google-fonts/poppins/Poppins_700Bold.ttf'),
-  });
-  
-  if (!loaded) {
-    return null;
-  }
   return(
     <View style={styles.box3}>
         <Text style={styles.text}>Adicionar</Text>
@@ -20,7 +12,7 @@ export default function BoxInferior() {
 }
 
 const styles=StyleSheet.create({
-  box3:{    
+  box3:{
     marginTop:'4%',
     marginLeft:'33%',
     width: '35%',
