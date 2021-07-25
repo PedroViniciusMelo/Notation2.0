@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/muli": "^0.1.0",
     "@expo-google-fonts/poppins": "^0.2.0",
     "expo": "~41.0.1",
     "expo-font": "~9.1.0",
