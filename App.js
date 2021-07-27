@@ -9,7 +9,6 @@ export default function App() {
       <StatusBar style="auto"/>
       <NovaAtividade/>
     </SafeAreaView>
-    
   );
 }
 
@@ -17,6 +16,6 @@ const styles = StyleSheet.create({
   container:{
     flex:1,
     backgroundColor:'#fff',
-    marginTop:'8.5%'
+   marginTop:'8%'  
   }
 })

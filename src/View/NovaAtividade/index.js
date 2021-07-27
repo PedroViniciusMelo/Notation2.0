@@ -1,5 +1,5 @@
 import  React, { useState } from 'react';
-import { Text, View, StyleSheet, Switch, Image, Button, Alert, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, StyleSheet, Switch, Image, Button, Alert, TouchableOpacity, TextInput, SafeAreaView } from 'react-native';
 import { Muli_500Medium, Muli_700Bold,useFonts } from '@expo-google-fonts/muli'
 
 export default function NovaAtividade() {
@@ -15,7 +15,7 @@ if (!loaded) {
     return null;
 }
   return(
-    <View >
+    <SafeAreaView >
         <View style={styles.top}>
             <TouchableOpacity>
                 <Image style={styles.opcoes} source={require('./../../../assets/icones/icone_opcoes.png')}/>
@@ -77,7 +77,7 @@ if (!loaded) {
                 <Text style={styles.imageinf5}>Info</Text>
             </View>
         </View>
-     </View>
+     </SafeAreaView>
   )
 }
 
@@ -217,8 +217,8 @@ botao:{
       flexDirection: 'row'
 },
    imagecalendar:{
-      width: 35,
-      height: 35,
+      width: 27,
+      height: 27
 },
    containernot:{
       flexDirection:'row',
