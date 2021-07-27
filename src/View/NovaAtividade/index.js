@@ -18,7 +18,7 @@ if (!loaded) {
     <View >
         <View style={styles.top}>
             <TouchableOpacity>
-                <Image source={require('./../../../assets/icones/icone_opcoes.png')}/>
+                <Image style={styles.opcoes} source={require('./../../../assets/icones/icone_opcoes.png')}/>
             </TouchableOpacity>
             <Text style={styles.compromisso}>Compromisso</Text>
          </View>
@@ -27,10 +27,15 @@ if (!loaded) {
             <TextInput style={styles.descrição} placeholder="Informe o título" onChangeText={()=>{}}/>
             <Text style={styles.titulo2}>Categoria</Text>
             <View style={styles.viewimput}>
-                <TextInput style={styles.descrição2} placeholder="Informe a categoria" onChangeText={()=>{}}/>              
-                <TouchableOpacity style={styles.botao}>
-                     <Image source={require('../../../assets/icones/icone_eyedrop.png')}/>
-                </TouchableOpacity>   
+                <TextInput style={styles.descrição2} placeholder="Informe a categoria" onChangeText={()=>{}}/>      
+                <View style={styles.viewbtcor}>   
+                     <View style={styles.viewbtcor2}>     
+                        <TouchableOpacity style={styles.botao}>
+                            <Image style={styles.imagebt} source={require('../../../assets/icones/icone_eyedrop.png')}/>
+                        </TouchableOpacity>
+                    </View>
+                    <Text style={styles.textcor}>COR</Text>
+                </View>   
             </View>   
             <View style={styles.textview}>
                 <Text style={styles.textdescr}>Descrição</Text><Text style={styles.textopc}>(Opcional)</Text>
@@ -65,11 +70,11 @@ if (!loaded) {
             <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_info.png')}/></TouchableOpacity>
             </View>
             <View style={styles.texticones}>
-                <Text style={{marginLeft:'-2%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9}}>Notas</Text>
-                <Text style={{marginLeft:'-4%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9}}>Calendário</Text>
-                <Text style={{marginLeft:'-4%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9}}>Feed</Text>
-                <Text style={{marginLeft:'-3%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9}}>Histórico</Text>
-                <Text style={{marginLeft:'-2%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9}}>Info</Text>
+                <Text style={styles.imageinf1}>Notas</Text>
+                <Text style={styles.imageinf2}>Calendário</Text>
+                <Text style={styles.imageinf3}>Feed</Text>
+                <Text style={styles.imageinf4}>Histórico</Text>
+                <Text style={styles.imageinf5}>Info</Text>
             </View>
         </View>
      </View>
@@ -84,6 +89,11 @@ const styles=StyleSheet.create({
       alignItems: 'center',
       flexDirection: 'row',
       backgroundColor: '#006EEF',
+},
+   opcoes:{
+      height: 30,
+      width: 30,
+      resizeMode:'contain'
 },
    compromisso:{
       fontSize: 30,
@@ -134,16 +144,40 @@ const styles=StyleSheet.create({
 },
    viewimput:{
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      fontFamily:'Muli_500Medium'
+      justifyContent: 'space-between'
 },
-   botao:{
+viewbtcor:{
+    backgroundColor:'#fff',
+    justifyContent:'center',
+    alignItems:'center',
+    width:50,
+    height:50,
+    marginRight:'4%'
+},
+viewbtcor2:{
+      backgroundColor:'#006eff',
+      width:'70%',
+      height:'70%',
+      justifyContent:'center',
+      alignItems:'center',
+      borderRadius:20
+},
+imagebt:{
+     backgroundColor:'#006eff',
+     width:25,
+     height:25,
+},
+textcor:{
+     color:'#006eff',
+     fontSize:10,
+     fontFamily:'Muli_500Medium'
+},
+botao:{
       backgroundColor: '#006eef',
       borderRadius: 40,
       width: '15%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginRight: '5%'
 },
     textview:{    
       flexDirection:'row',
@@ -174,7 +208,7 @@ const styles=StyleSheet.create({
       width: '65%',
       height: '10%',
       marginTop: '3%',
-      marginLeft: '17%',
+      marginLeft: '18%',
       borderWidth: 1 ,
       borderRadius: 22,
       backgroundColor: '#fff',
@@ -196,32 +230,22 @@ const styles=StyleSheet.create({
       fontFamily: 'Muli_700Bold',
       fontSize: 14
 },
-    textsalvar:{
-      color:'#fff',
-      fontFamily:'Muli_500Medium'
-},
-    imagecheck:{
-      width:25,
-      height:30,
-      margin:10,
-      resizeMode:'contain'
-},
     botao2:{
-      marginRight:'26%',
-      marginLeft:'26%',
+      marginRight:'28%',
+      marginLeft:'28%',
       backgroundColor:'#006EFF',
-      borderRadius:20,
+      borderRadius:20
 },
     continferior:{
       backgroundColor:'#006EFF',
       marginTop:'2%',
       height: '8.5%',
-      flexDirection:'column',  
+      flexDirection:'column'
 },
     iconesinf2:{
       width: 27,
       height: 27,
-      flexDirection:'row',
+      flexDirection:'row'
 },
    iconesinf:{
        flexDirection:'row',
@@ -236,7 +260,14 @@ const styles=StyleSheet.create({
     fontFamily:'Muli_500Medium',
     fontSize:10
 }, 
-texticones2:{
-    fontFamily:'Muli_500Medium',fontSize:9,color:'#fff'
-}
+  texticones2:{
+    fontFamily:'Muli_500Medium',
+    fontSize:9,
+    color:'#fff'
+},
+  imageinf1:{marginLeft:'-2%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
+  imageinf2:{marginLeft:'-4%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
+  imageinf3:{marginLeft:'-4%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
+  imageinf4:{marginLeft:'-3%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
+  imageinf5:{marginLeft:'-2%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
 })
