@@ -41,6 +41,7 @@ export default function App() {
                 paddingBottom:4,
                 
             },
+            
             activeTintColor: '#FFF',
             inactiveTintColor: '#FFF',
           }}
@@ -63,6 +64,7 @@ export default function App() {
               name="Calendário"
               component = {Nota}
               options={{
+                
                 tabBarIcon: () => (
                   <Image
                     style={{resizeMode:"contain",width:20,height:20}}

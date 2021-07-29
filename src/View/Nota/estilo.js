@@ -2,21 +2,7 @@ import { StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
 
-    texto: {
-        fontFamily:"Poppins_700Bold",
-        fontSize:30,
-        color:"white",
-        padding:20
-
-
-    },
-    barratopo:{
-        alignItems:'center',
-        flexDirection:"row",
-        shadowRadius: 10.00,
-        backgroundColor: '#007aff',
-        paddingLeft:23,
-    },
+    
     plus:{
         backgroundColor: '#007aff',
         borderRadius: 70,
@@ -26,7 +12,7 @@ export default StyleSheet.create({
         borderWidth:1,
         borderColor:"#000",
         margin:5,
-        height:"84%"
+        height:"98%"
     
     },
     tarefasCalendario:{
