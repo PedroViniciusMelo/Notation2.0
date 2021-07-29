@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Poppins_600SemiBold, Poppins_700Bold, Poppins_400Regular, Poppins_800ExtraBold} from '@expo-google-fonts/poppins';
 import { Muli_500Medium, Muli_700Bold,useFonts } from '@expo-google-fonts/muli'
+import NovaAtividade from './src/View/NovaAtividade';
 
 
 const Tab = createBottomTabNavigator();
@@ -61,7 +62,7 @@ export default function App() {
               />
             <Tab.Screen  
               name="Calendário"
-              component = {Nota}
+              component = {NovaAtividade}
               options={{
                 tabBarIcon: () => (
                   <Image

@@ -1,10 +1,8 @@
 import  React, { useState } from 'react';
 import { Text, View, StyleSheet, Switch, Image, Button, Alert, TouchableOpacity, TextInput, SafeAreaView } from 'react-native';
-import { Muli_500Medium, Muli_700Bold,useFonts } from '@expo-google-fonts/muli'
 
-const[ligado,setLigado]=useState(true)
-
-function NovaAtividade() {
+export default function NovaAtividade () {
+    const[ligado,setLigado]=useState(true)
     return(
         <SafeAreaView >
             <View style={styles.top}>
@@ -52,39 +50,10 @@ function NovaAtividade() {
                     />    
                 </View>    
             </View>
-            <View style={styles.continferior}>
-                <View style={styles.iconesinf}>
-                <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_caneta.png')}/></TouchableOpacity>
-                <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_calendario_3.png')}/></TouchableOpacity>
-                <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_home.png')}/></TouchableOpacity>
-                <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_historico.png')}/></TouchableOpacity>
-                <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_info.png')}/></TouchableOpacity>
-                </View>
-                <View style={styles.texticones}>
-                    <Text style={styles.imageinf1}>Notas</Text>
-                    <Text style={styles.imageinf2}>Calendário</Text>
-                    <Text style={styles.imageinf3}>Feed</Text>
-                    <Text style={styles.imageinf4}>Histórico</Text>
-                    <Text style={styles.imageinf5}>Info</Text>
-                </View>
-            </View>
          </SafeAreaView>
-      )
-}
-export default function() {
-    const [loaded] = useFonts({
-        Muli_500Medium: require('../../../node_modules/@expo-google-fonts/muli/Muli_500Medium.ttf'),
-        Muli_700Bold: require('../../../node_modules/@expo-google-fonts/muli/Muli_700Bold.ttf'),
+            
+    )
         
-    });
-    if (!loaded) {
-        return null;
-    }
-    return(
-        <SafeAreaView style={styles.container}>
-            <StatusBar style="auto"/>
-            <NovaAtividade/>
-        </SafeAreaView>)
 }
 
 const styles=StyleSheet.create({
