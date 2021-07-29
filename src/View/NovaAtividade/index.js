@@ -2,83 +2,89 @@ import  React, { useState } from 'react';
 import { Text, View, StyleSheet, Switch, Image, Button, Alert, TouchableOpacity, TextInput, SafeAreaView } from 'react-native';
 import { Muli_500Medium, Muli_700Bold,useFonts } from '@expo-google-fonts/muli'
 
-export default function NovaAtividade() {
 const[ligado,setLigado]=useState(true)
 
-const [loaded] = useFonts({
-    Muli_500Medium: require('../../../node_modules/@expo-google-fonts/muli/Muli_500Medium.ttf'),
-    Muli_700Bold: require('../../../node_modules/@expo-google-fonts/muli/Muli_700Bold.ttf'),
-    
-});
-      
-if (!loaded) {
-    return null;
-}
-  return(
-    <SafeAreaView >
-        <View style={styles.top}>
-            <TouchableOpacity>
-                <Image style={styles.opcoes} source={require('./../../../assets/icones/icone_opcoes.png')}/>
-            </TouchableOpacity>
-            <Text style={styles.compromisso}>Compromisso</Text>
-         </View>
-        <View style={styles.mid}>
-            <Text style={styles.titulo}>Título</Text>
-            <TextInput style={styles.descrição} placeholder="Informe o título" onChangeText={()=>{}}/>
-            <Text style={styles.titulo2}>Categoria</Text>
-            <View style={styles.viewimput}>
-                <TextInput style={styles.descrição2} placeholder="Informe a categoria" onChangeText={()=>{}}/>      
-                <View style={styles.viewbtcor}>   
-                     <View style={styles.viewbtcor2}>     
-                        <TouchableOpacity style={styles.botao}>
-                            <Image style={styles.imagebt} source={require('../../../assets/icones/icone_eyedrop.png')}/>
-                        </TouchableOpacity>
-                    </View>
-                    <Text style={styles.textcor}>COR</Text>
+function NovaAtividade() {
+    return(
+        <SafeAreaView >
+            <View style={styles.top}>
+                <TouchableOpacity>
+                    <Image style={styles.opcoes} source={require('./../../../assets/icones/icone_opcoes.png')}/>
+                </TouchableOpacity>
+                <Text style={styles.compromisso}>Compromisso</Text>
+             </View>
+            <View style={styles.mid}>
+                <Text style={styles.titulo}>Título</Text>
+                <TextInput style={styles.descrição} placeholder="Informe o título" onChangeText={()=>{}}/>
+                <Text style={styles.titulo2}>Categoria</Text>
+                <View style={styles.viewimput}>
+                    <TextInput style={styles.descrição2} placeholder="Informe a categoria" onChangeText={()=>{}}/>      
+                    <View style={styles.viewbtcor}>   
+                         <View style={styles.viewbtcor2}>     
+                            <TouchableOpacity style={styles.botao}>
+                                <Image style={styles.imagebt} source={require('../../../assets/icones/icone_eyedrop.png')}/>
+                            </TouchableOpacity>
+                        </View>
+                        <Text style={styles.textcor}>COR</Text>
+                    </View>   
                 </View>   
-            </View>   
-            <View style={styles.textview}>
-                <Text style={styles.textdescr}>Descrição</Text><Text style={styles.textopc}>(Opcional)</Text>
-            </View> 
-            <TextInput style={styles.descrição3} placeholder="Informe a descrição" onChangeText={()=>{}} multiline={true}/>
-            <View style={styles.data}>
-                <Image style={styles.imagecalendar} source={require('../../../assets/icones/icone_calendario_2.png')}/>
-                <Text>25/07/2021 12:00</Text>
+                <View style={styles.textview}>
+                    <Text style={styles.textdescr}>Descrição</Text><Text style={styles.textopc}>(Opcional)</Text>
+                </View> 
+                <TextInput style={styles.descrição3} placeholder="Informe a descrição" onChangeText={()=>{}} multiline={true}/>
+                <View style={styles.data}>
+                    <Image style={styles.imagecalendar} source={require('../../../assets/icones/icone_calendario_2.png')}/>
+                    <Text>25/07/2021 12:00</Text>
+                </View>
+                <View style={styles.containernot}> 
+                    <Switch 
+                        thumbColor={ ligado ?  '#006EFF' : '#006EFF' }  
+                        trackColor={{ false: '#006EFF', true: '#006EFF' }}     
+                        value={true}     
+                    />
+                    <Text style={styles.textnotificar}>Notificar</Text>
+                </View>
+                <View style={styles.botao2}>
+                    <Button 
+                        color='#006EFF'
+                        title="Salvar"
+                        onPress={()=>Alert.alert('Salvo')}
+                    />    
+                </View>    
             </View>
-            <View style={styles.containernot}> 
-                <Switch 
-                    thumbColor={ ligado ?  '#006EFF' : '#006EFF' }  
-                    trackColor={{ false: '#006EFF', true: '#006EFF' }}     
-                    value={true}     
-                />
-                <Text style={styles.textnotificar}>Notificar</Text>
+            <View style={styles.continferior}>
+                <View style={styles.iconesinf}>
+                <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_caneta.png')}/></TouchableOpacity>
+                <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_calendario_3.png')}/></TouchableOpacity>
+                <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_home.png')}/></TouchableOpacity>
+                <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_historico.png')}/></TouchableOpacity>
+                <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_info.png')}/></TouchableOpacity>
+                </View>
+                <View style={styles.texticones}>
+                    <Text style={styles.imageinf1}>Notas</Text>
+                    <Text style={styles.imageinf2}>Calendário</Text>
+                    <Text style={styles.imageinf3}>Feed</Text>
+                    <Text style={styles.imageinf4}>Histórico</Text>
+                    <Text style={styles.imageinf5}>Info</Text>
+                </View>
             </View>
-            <View style={styles.botao2}>
-                <Button 
-                    color='#006EFF'
-                    title="Salvar"
-                    onPress={()=>Alert.alert('Salvo')}
-                />    
-            </View>    
-        </View>
-        <View style={styles.continferior}>
-            <View style={styles.iconesinf}>
-            <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_caneta.png')}/></TouchableOpacity>
-            <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_calendario_3.png')}/></TouchableOpacity>
-            <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_home.png')}/></TouchableOpacity>
-            <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_historico.png')}/></TouchableOpacity>
-            <TouchableOpacity><Image style={styles.iconesinf2} source={require('../../../assets/icones/icone_info.png')}/></TouchableOpacity>
-            </View>
-            <View style={styles.texticones}>
-                <Text style={styles.imageinf1}>Notas</Text>
-                <Text style={styles.imageinf2}>Calendário</Text>
-                <Text style={styles.imageinf3}>Feed</Text>
-                <Text style={styles.imageinf4}>Histórico</Text>
-                <Text style={styles.imageinf5}>Info</Text>
-            </View>
-        </View>
-     </SafeAreaView>
-  )
+         </SafeAreaView>
+      )
+}
+export default function() {
+    const [loaded] = useFonts({
+        Muli_500Medium: require('../../../node_modules/@expo-google-fonts/muli/Muli_500Medium.ttf'),
+        Muli_700Bold: require('../../../node_modules/@expo-google-fonts/muli/Muli_700Bold.ttf'),
+        
+    });
+    if (!loaded) {
+        return null;
+    }
+    return(
+        <SafeAreaView style={styles.container}>
+            <StatusBar style="auto"/>
+            <NovaAtividade/>
+        </SafeAreaView>)
 }
 
 const styles=StyleSheet.create({
