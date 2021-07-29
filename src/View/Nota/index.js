@@ -1,7 +1,9 @@
 import React from 'react';
+import InputScrollView from 'react-native-input-scroll-view';
 import { Text, View,StyleSheet, TouchableOpacity,Button,StatusBar,TextInput,Image} from 'react-native';
 import estilo from './estilo'
 import { createStackNavigator } from '@react-navigation/stack';
+import { Feather } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
@@ -9,21 +11,21 @@ const Stack = createStackNavigator();
 function Nota() {
  
     return(
-      <View  >
+      <View style={estilo.nota}>
         <StatusBar backgroundColor='#006EFF'/>
-          <Image 
-          style={{width:2,height:2}}
-          source={require('../../../assets/icones/icone_opcoes.png')}/>
-    
-        <View style={estilo.tarefas}>
-              <TextInput 
-                multiline
-                style={{fontFamily:"Poppins_700Bold"}}
-                autoCapitalize="words"
-              >
-                  
-              </TextInput>
-        </View>
+        <InputScrollView>
+            <TextInput 
+              style={estilo.nota}
+              multiline={true}
+              underlineColorAndroid="transparent"
+              placeholder="Nota"
+              maxLength={200}
+              placeholderTextColor="grey"
+              numberOfLines={1}
+              style={{fontFamily:"Poppins_700Bold"}}
+              autoCapitalize="words"
+            />
+          </InputScrollView>
       </View>
     )
   }
@@ -43,9 +45,11 @@ export default function () {
       <Stack.Screen name="Nota" component={Nota}
         options={{
           headerLeft: () => (
-            <Image   
-            style={{resizeMode:"center",marginLeft:10}}
-            source={require('../../../assets/icones/icone_opcoes.png')}/>
+            <Feather
+              name='more-vertical'
+              color='white'
+              size={35}
+              />
           ),
         }}
       
