@@ -1,7 +1,7 @@
 import React from 'react';
-import InputScrollView from 'react-native-input-scroll-view';
-import { Text, View,StyleSheet, TouchableOpacity,Button,StatusBar,TextInput,Image} from 'react-native';
-import estilo from './estilo'
+import { Text, View,StyleSheet, TouchableOpacity,KeyboardAvoidingView,StatusBar,TextInput,Image} from 'react-native';
+import estilo from './estilo';
+import Notas from '../Notas';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Feather } from '@expo/vector-icons';
 
@@ -11,9 +11,17 @@ const Stack = createStackNavigator();
 function Nota() {
  
     return(
-      <View style={estilo.nota}>
+    <View style={estilo.container}>
+      <View style={estilo.conteinernota}>
         <StatusBar backgroundColor='#006EFF'/>
-        <InputScrollView>
+            <TextInput 
+              style={estilo.titulo}
+              underlineColorAndroid="transparent"
+              placeholder="Título"
+              maxLength={200}
+              placeholderTextColor="grey"
+              autoCapitalize="words"
+            />
             <TextInput 
               style={estilo.nota}
               multiline={true}
@@ -21,12 +29,12 @@ function Nota() {
               placeholder="Nota"
               maxLength={200}
               placeholderTextColor="grey"
-              numberOfLines={1}
-              style={{fontFamily:"Poppins_700Bold"}}
+              scrollEnable
               autoCapitalize="words"
             />
-          </InputScrollView>
       </View>
+    </View>
+
     )
   }
 
@@ -35,27 +43,7 @@ export default function () {
   
 
   return(
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle:{backgroundColor:"#006EFF"},
-        headerTitleStyle:{color:"white",fontSize:30,fontFamily:"Poppins_700Bold",padding:"26%"},
-        headerBackImage:{}
-      }}
-    >
-      <Stack.Screen name="Nota" component={Nota}
-        options={{
-          headerLeft: () => (
-            <Feather
-              name='more-vertical'
-              color='white'
-              size={35}
-              />
-          ),
-        }}
-      
-      
-      />
-    </Stack.Navigator>   
-
-  )}
+    <Nota/>
+  )
+}
 

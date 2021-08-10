@@ -1,5 +1,8 @@
 import React from 'react';
 import Nota from './src/View/Nota';
+import Notas from './src/View/Notas';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Feather } from '@expo/vector-icons';
 import { Text, View, TouchableOpacity,StatusBar, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -24,7 +27,41 @@ export default function App() {
   if (!fontsLoaded) {
       return null;
   } 
-  
+    function Stacknotas() {
+
+      const Stack = createStackNavigator();
+      return(
+      <Stack.Navigator
+      screenOptions={{
+        headerStyle:{backgroundColor:"#006EFF"},
+        headerTitleStyle:{color:"white",fontSize:30,fontFamily:"Poppins_700Bold",padding:"26%"},
+      }}
+    >
+      <Stack.Screen name="Notas" component={Notas}
+        options={{
+          headerLeft: () => (
+            <Feather
+              name='more-vertical'
+              color='white'
+              size={35}
+              />
+          )
+        }}
+        />
+        <Stack.Screen name="Nota" component={Nota}
+        options={{
+          headerLeft: () => (
+            <Feather
+              name='more-vertical'
+              color='white'
+              size={35}
+              />
+          )
+        }}
+      />
+    </Stack.Navigator>
+      )  
+  }
   return (
       <NavigationContainer>
           <Tab.Navigator
@@ -50,7 +87,7 @@ export default function App() {
             
             <Tab.Screen  
               name="Notas"
-              component = {Nota}
+              component = {Stacknotas}
               options={{
                 tabBarIcon: () => (
                   <Image
