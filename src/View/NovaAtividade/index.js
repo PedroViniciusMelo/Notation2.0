@@ -4,6 +4,7 @@ import { Text, View, StyleSheet, Switch, Image, Button, Alert, TouchableOpacity,
 export default function NovaAtividade () {
     const[ligado,setLigado]=useState(true)
     return(
+        
         <SafeAreaView >
             <View style={styles.top}>
                 <TouchableOpacity>
@@ -58,6 +59,7 @@ export default function NovaAtividade () {
 
 const styles=StyleSheet.create({
    top:{
+      marginTop:'6.5%',
       width: '100%',
       height: '10%',      
       justifyContent: 'center',
@@ -79,7 +81,7 @@ const styles=StyleSheet.create({
 },
    mid:{
      width: '90.5%',
-      height: '79%',
+      height: '83.5%',
       backgroundColor: '#fff',
       elevation: 4,
       marginTop: '4%',
