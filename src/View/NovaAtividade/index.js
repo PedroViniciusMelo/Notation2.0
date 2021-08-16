@@ -1,10 +1,11 @@
-import  React, { useState } from 'react';
-import { Text, View, StyleSheet, Switch, Image, Button, Alert, TouchableOpacity, TextInput, SafeAreaView } from 'react-native';
+import  React, { useState, Component} from 'react';
+import { Text, View, StyleSheet, Switch, Image, Button, Alert, TouchableOpacity, TextInput, SafeAreaView, Modal, Dimensions} from 'react-native';
+import ColorPicker from 'react-native-wheel-color-picker'
 
 export default function NovaAtividade () {
-    const[ligado,setLigado]=useState(true)
-    return(
-        
+ const[ligado,setLigado]=useState(true)
+ const[visivel,setVisivel]=useState(false)
+    return(       
         <SafeAreaView >
             <View style={styles.top}>
                 <TouchableOpacity>
@@ -19,10 +20,29 @@ export default function NovaAtividade () {
                 <View style={styles.viewimput}>
                     <TextInput style={styles.descrição2} placeholder="Informe a categoria" onChangeText={()=>{}}/>      
                     <View style={styles.viewbtcor}>   
-                         <View style={styles.viewbtcor2}>     
-                            <TouchableOpacity style={styles.botao}>
+                         <View style={styles.viewbtcor2}>       
+                            <TouchableOpacity style={styles.botao} onPress={()=>{setVisivel(true)}}>
                                 <Image style={styles.imagebt} source={require('../../../assets/icones/icone_eyedrop.png')}/>
-                            </TouchableOpacity>
+                                <Modal
+                                    transparent={false}
+                                    visible={visivel}
+                                >
+                                 <View style={styles.colorwheel}>
+                                    <ColorPicker
+                                        onColorChange={(cor) => console.log(cor)}
+                                        thumbSize={35}
+                                        sliderSize={25}
+                                        row={false}
+                                    />
+                                 </View>   
+                                 <View style={{flex:1,alignItems:'center',justifyContent:'center',marginBottom:15}}>      
+                                    <Button
+                                        title="Confirmar"
+                                        onPress={()=>{setVisivel(false)}}
+                                    />
+                                  </View>
+                                </Modal>
+                            </TouchableOpacity>          
                         </View>
                         <Text style={styles.textcor}>COR</Text>
                     </View>   
@@ -59,7 +79,7 @@ export default function NovaAtividade () {
 
 const styles=StyleSheet.create({
    top:{
-      marginTop:'6.5%',
+      marginTop:'0%',
       width: '100%',
       height: '10%',      
       justifyContent: 'center',
@@ -81,7 +101,7 @@ const styles=StyleSheet.create({
 },
    mid:{
      width: '90.5%',
-      height: '83.5%',
+      height: '86.5%',
       backgroundColor: '#fff',
       elevation: 4,
       marginTop: '4%',
@@ -247,4 +267,12 @@ botao:{
   imageinf3:{marginLeft:'-4%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
   imageinf4:{marginLeft:'-3%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
   imageinf5:{marginLeft:'-2%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
+  colorwheel:{
+      flex:9,
+      backgroundColor:'#fff',
+      paddingBottom:15,
+      marginLeft:'5%',
+      marginRight:'5%'
+  }
 })
+

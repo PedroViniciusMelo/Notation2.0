@@ -10,7 +10,6 @@ import {Poppins_600SemiBold, Poppins_700Bold, Poppins_400Regular, Poppins_800Ext
 import { Muli_500Medium, Muli_700Bold,useFonts } from '@expo-google-fonts/muli'
 import NovaAtividade from './src/View/NovaAtividade';
 
-
 const Tab = createBottomTabNavigator();
 
 export default function App() {
