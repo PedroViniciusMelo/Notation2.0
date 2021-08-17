@@ -24,18 +24,20 @@ export default function NovaAtividade () {
                             <TouchableOpacity style={styles.botao} onPress={()=>{setVisivel(true)}}>
                                 <Image style={styles.imagebt} source={require('../../../assets/icones/icone_eyedrop.png')}/>
                                 <Modal
-                                    transparent={false}
+                                    animationType="slide"
+                                    transparent={true}
                                     visible={visivel}
+                                    onRequestClose={()=>{setVisivel(false)}}
                                 >
                                  <View style={styles.colorwheel}>
                                     <ColorPicker
                                         onColorChange={(cor) => console.log(cor)}
-                                        thumbSize={35}
+                                        thumbSize={50}
                                         sliderSize={25}
                                         row={false}
                                     />
                                  </View>   
-                                 <View style={{flex:1,alignItems:'center',justifyContent:'center',marginBottom:15}}>      
+                                 <View style={{ marginLeft:'2%', marginRight:'2%',elevation:5}}>      
                                     <Button
                                         title="Confirmar"
                                         onPress={()=>{setVisivel(false)}}
@@ -268,11 +270,16 @@ botao:{
   imageinf4:{marginLeft:'-3%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
   imageinf5:{marginLeft:'-2%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
   colorwheel:{
-      flex:9,
-      backgroundColor:'#fff',
+      
+      backgroundColor:'#e5e5e5',
       paddingBottom:15,
-      marginLeft:'5%',
-      marginRight:'5%'
+      borderTopLeftRadius: 20,
+      borderTopRightRadius:20,
+      marginLeft:'2%',
+      marginRight:'2%',
+      height: '60%',
+      marginTop:'30%',
+      elevation:5
   }
 })
 
