@@ -5,6 +5,8 @@ import ColorPicker from 'react-native-wheel-color-picker'
 export default function NovaAtividade () {
  const[ligado,setLigado]=useState(true)
  const[visivel,setVisivel]=useState(false)
+ const[modal2,setmodal2]=useState(false)
+const[ligado2,setLigado2]=useState(false)
     return(       
         <SafeAreaView >
             <View style={styles.top}>
@@ -37,7 +39,7 @@ export default function NovaAtividade () {
                                         row={false}
                                     />
                                  </View>   
-                                 <View style={{ marginLeft:'2%', marginRight:'2%',elevation:5}}>      
+                                 <View style={styles.Bview}>      
                                     <Button
                                         title="Confirmar"
                                         onPress={()=>{setVisivel(false)}}
@@ -61,7 +63,8 @@ export default function NovaAtividade () {
                     <Switch 
                         thumbColor={ ligado ?  '#006EFF' : '#006EFF' }  
                         trackColor={{ false: '#006EFF', true: '#006EFF' }}     
-                        value={true}     
+                        value={ligado2}    
+                        onChange={()=>{setLigado2(!ligado2)}}
                     />
                     <Text style={styles.textnotificar}>Notificar</Text>
                 </View>
@@ -69,8 +72,31 @@ export default function NovaAtividade () {
                     <Button 
                         color='#006EFF'
                         title="Salvar"
-                        onPress={()=>Alert.alert('Salvo')}
+                        onPress={()=>setmodal2(true)}
                     />    
+                    <Modal 
+                         animationType="none"
+                         transparent={true}
+                         visible={modal2}
+                    >
+                    <View style={styles.estiloviewbutton}>
+                        <View style={styles.buttonview}>
+                        <Button
+                            color='#006eff'
+                            title="Salvar"
+                            onPress={()=>setmodal2(false)}
+                        />
+                        </View>
+                        <View  style={styles.buttonview}>
+                         <Button
+                            color='#f00'
+                            title="Cancelar"
+                            onPress={()=>setmodal2(false)}
+                        />
+                        </View>
+                    </View>
+                    </Modal>
+
                 </View>    
             </View>
          </SafeAreaView>
@@ -269,8 +295,7 @@ botao:{
   imageinf3:{marginLeft:'-4%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
   imageinf4:{marginLeft:'-3%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
   imageinf5:{marginLeft:'-2%',color:'#fff',fontFamily:'Muli_500Medium',fontSize:9},
-  colorwheel:{
-      
+  colorwheel:{     
       backgroundColor:'#e5e5e5',
       paddingBottom:15,
       borderTopLeftRadius: 20,
@@ -280,6 +305,28 @@ botao:{
       height: '60%',
       marginTop:'30%',
       elevation:5
-  }
+  },
+  estiloviewbutton:{
+        flexDirection:'row', 
+        backgroundColor:'#e5e5e5',
+        width:'80%',
+        height:'10%',
+        justifyContent:'center', 
+        alignItems:'center',
+        padding:10,
+        marginLeft:'11%',
+        marginTop:'154%', 
+        borderRadius:18,
+        elevation:20
+    },
+  buttonview:{
+      width:'50%', 
+      padding:10
+    },
+    Bview:{
+        marginLeft:'2%', 
+        marginRight:'2%',
+        elevation:5
+    }
 })
 
