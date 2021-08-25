@@ -1,11 +1,11 @@
-import  React, { useState, Component} from 'react';
-import { Text, View, StyleSheet, Switch, Image, Button, Alert, TouchableOpacity, TextInput, SafeAreaView, Modal, Dimensions} from 'react-native';
+import  React, { useState} from 'react';
+import { Text, View, StyleSheet, Switch, Image, Button, TouchableOpacity, TextInput, SafeAreaView, Modal} from 'react-native';
 import ColorPicker from 'react-native-wheel-color-picker'
 
 export default function NovaAtividade () {
  const[ligado,setLigado]=useState(true)
  const[visivel,setVisivel]=useState(false)
- const[modal2,setmodal2]=useState(false)
+ const[cor,setCor]=useState()
 const[ligado2,setLigado2]=useState(false)
     return(       
         <SafeAreaView >
@@ -33,7 +33,7 @@ const[ligado2,setLigado2]=useState(false)
                                 >
                                  <View style={styles.colorwheel}>
                                     <ColorPicker
-                                        onColorChange={(cor) => console.log(cor)}
+                                        onColorChange={(cor) => setCor(cor)}
                                         thumbSize={50}
                                         sliderSize={25}
                                         row={false}
@@ -68,36 +68,12 @@ const[ligado2,setLigado2]=useState(false)
                     />
                     <Text style={styles.textnotificar}>Notificar</Text>
                 </View>
-                <View style={styles.botao2}>
-                    <Button 
-                        color='#006EFF'
-                        title="Salvar"
-                        onPress={()=>setmodal2(true)}
-                    />    
-                    <Modal 
-                         animationType="none"
-                         transparent={true}
-                         visible={modal2}
-                    >
-                    <View style={styles.estiloviewbutton}>
-                        <View style={styles.buttonview}>
-                        <Button
-                            color='#006eff'
-                            title="Salvar"
-                            onPress={()=>setmodal2(false)}
-                        />
+                    <TouchableOpacity>   
+                        <View style={styles.botao2}>
+                            <Image style={styles.check} source={require('../../../assets/icones/icone_check.png')}/>
+                            <Text style={styles.tsave}>Salvar</Text>
                         </View>
-                        <View  style={styles.buttonview}>
-                         <Button
-                            color='#f00'
-                            title="Cancelar"
-                            onPress={()=>setmodal2(false)}
-                        />
-                        </View>
-                    </View>
-                    </Modal>
-
-                </View>    
+                    </TouchableOpacity>
             </View>
          </SafeAreaView>
             
@@ -113,7 +89,7 @@ const styles=StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'row',
-      backgroundColor: '#006EEF',
+      backgroundColor:'#006eff'
 },
    opcoes:{
       height: 30,
@@ -125,7 +101,7 @@ const styles=StyleSheet.create({
       color:'#fff',
       paddingLeft: '16%',
       marginRight: '14%',
-      fontFamily:'Muli_700Bold'
+      fontFamily:'Muli_700Bold',
 },
    mid:{
      width: '90.5%',
@@ -233,7 +209,7 @@ botao:{
       width: '65%',
       height: '10%',
       marginTop: '3%',
-      marginLeft: '18%',
+      marginLeft: '17%',
       borderWidth: 1 ,
       borderRadius: 22,
       backgroundColor: '#fff',
@@ -257,9 +233,26 @@ botao:{
 },
     botao2:{
       marginRight:'28%',
-      marginLeft:'28%',
+      marginLeft:'22%',
       backgroundColor:'#006EFF',
-      borderRadius:20
+      borderRadius:10,
+      width: '55%',
+      height: '28%',
+      justifyContent:'center',
+      alignItems:'center',
+      flexDirection:'row',
+},
+check:{
+    width: 27,
+    height: 27,
+    resizeMode:'contain',
+    marginLeft:'10%'
+},
+tsave:{
+        color: '#fff',
+        fontSize:16,
+        fontFamily:'Muli_700Bold',
+        padding: 11
 },
     continferior:{
       backgroundColor:'#006EFF',
@@ -306,23 +299,6 @@ botao:{
       marginTop:'30%',
       elevation:5
   },
-  estiloviewbutton:{
-        flexDirection:'row', 
-        backgroundColor:'#e5e5e5',
-        width:'80%',
-        height:'10%',
-        justifyContent:'center', 
-        alignItems:'center',
-        padding:10,
-        marginLeft:'11%',
-        marginTop:'154%', 
-        borderRadius:18,
-        elevation:20
-    },
-  buttonview:{
-      width:'50%', 
-      padding:10
-    },
     Bview:{
         marginLeft:'2%', 
         marginRight:'2%',
