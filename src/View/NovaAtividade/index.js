@@ -6,7 +6,7 @@ export default function NovaAtividade () {
  const[ligado,setLigado]=useState(true)
  const[visivel,setVisivel]=useState(false)
  const[cor,setCor]=useState()
-const[ligado2,setLigado2]=useState(false)
+const[ligado2,setLigado2]=useState(true)
     return(       
         <SafeAreaView >
             <View style={styles.top}>
@@ -61,8 +61,8 @@ const[ligado2,setLigado2]=useState(false)
                 </View>
                 <View style={styles.containernot}> 
                     <Switch 
-                        thumbColor={ ligado ?  '#006EFF' : '#006EFF' }  
-                        trackColor={{ false: '#006EFF', true: '#006EFF' }}     
+                        thumbColor={ ligado ?  '#ddd' : '#006eef' }  
+                        trackColor={{ false: '#c1c1c1', true: '#c1c1c1' }}     
                         value={ligado2}    
                         onChange={()=>{setLigado2(!ligado2)}}
                     />
