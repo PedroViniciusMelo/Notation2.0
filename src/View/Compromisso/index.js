@@ -2,10 +2,10 @@ import  React, { useState} from 'react';
 import { Text, View, StyleSheet, Switch, Image, Button, TouchableOpacity, TextInput, SafeAreaView, Modal} from 'react-native';
 import ColorPicker from 'react-native-wheel-color-picker'
 
-export default function NovaAtividade () {
- const[ligado,setLigado]=useState(true)
- const[visivel,setVisivel]=useState(false)
- const[cor,setCor]=useState()
+export default function Compromisso () {
+const[ligado,setLigado]=useState(true)
+const[visivel,setVisivel]=useState(false)
+const[cor,setCor]=useState()
 const[ligado2,setLigado2]=useState(true)
     return(       
         <SafeAreaView >
@@ -85,7 +85,7 @@ const styles=StyleSheet.create({
    top:{
       marginTop:'0%',
       width: '100%',
-      height: '10%',      
+      height: '8.7%',      
       justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'row',
@@ -105,7 +105,7 @@ const styles=StyleSheet.create({
 },
    mid:{
      width: '90.5%',
-      height: '86.5%',
+      height: '87.5%',
       backgroundColor: '#fff',
       elevation: 4,
       marginTop: '4%',
