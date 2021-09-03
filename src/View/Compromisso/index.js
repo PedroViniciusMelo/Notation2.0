@@ -1,12 +1,22 @@
 import  React, { useState} from 'react';
 import { Text, View, StyleSheet, Switch, Image, Button, TouchableOpacity, TextInput, SafeAreaView, Modal} from 'react-native';
-import ColorPicker from 'react-native-wheel-color-picker'
+import { ColorPicker } from 'react-native-color-picker'
+import compromissodb from '../../BancoDeDados/SQLite/Compromissodb.js'
 
 export default function Compromisso () {
 const[ligado,setLigado]=useState(true)
 const[visivel,setVisivel]=useState(false)
-const[cor,setCor]=useState()
+const[color,setColor]=useState()
 const[ligado2,setLigado2]=useState(true)
+
+function dados(IdFinal){
+    compromissodb.create({titulo:titulo,categoria:categoria,cor:cor,descricao:descricao,data:date.toString(),notificar:IdFinal,atrasado:False,concluida:concluida,dataConcluida:dataConcluida})
+      .then(()=>{
+            exibirToast('Adicionado com sucesso')
+ })
+      .catch(err=>console.log(err))
+
+}
     return(       
         <SafeAreaView >
             <View style={styles.top}>
@@ -22,8 +32,8 @@ const[ligado2,setLigado2]=useState(true)
                 <View style={styles.viewimput}>
                     <TextInput style={styles.descrição2} placeholder="Informe a categoria" onChangeText={()=>{}}/>      
                     <View style={styles.viewbtcor}>   
+                    <TouchableOpacity style={styles.botao} onPress={()=>{setVisivel(true)}}>
                          <View style={styles.viewbtcor2}>       
-                            <TouchableOpacity style={styles.botao} onPress={()=>{setVisivel(true)}}>
                                 <Image style={styles.imagebt} source={require('../../../assets/icones/icone_eyedrop.png')}/>
                                 <Modal
                                     animationType="slide"
@@ -33,21 +43,20 @@ const[ligado2,setLigado2]=useState(true)
                                 >
                                  <View style={styles.colorwheel}>
                                     <ColorPicker
-                                        onColorChange={(cor) => setCor(cor)}
-                                        thumbSize={50}
-                                        sliderSize={25}
-                                        row={false}
+                                     onColorSelected={ color => alert(`Color selected: ${color}`)}
+                                        defaultColor={'#006eef'}
+                                        style={{flex: 1}}
                                     />
                                  </View>   
                                  <View style={styles.Bview}>      
                                     <Button
                                         title="Confirmar"
-                                        onPress={()=>{setVisivel(false)}}
+                                        onPress={(color) => setColor(color), () => {setVisivel(false)}}
                                     />
                                   </View>
-                                </Modal>
-                            </TouchableOpacity>          
+                                </Modal>            
                         </View>
+                        </TouchableOpacity> 
                         <Text style={styles.textcor}>COR</Text>
                     </View>   
                 </View>   
@@ -75,10 +84,8 @@ const[ligado2,setLigado2]=useState(true)
                         </View>
                     </TouchableOpacity>
             </View>
-         </SafeAreaView>
-            
-    )
-        
+         </SafeAreaView>           
+    )        
 }
 
 const styles=StyleSheet.create({
@@ -89,7 +96,7 @@ const styles=StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'row',
-      backgroundColor:'#006eff'
+     backgroundColor:'#006eef'
 },
    opcoes:{
       height: 30,
@@ -156,7 +163,6 @@ viewbtcor:{
     marginRight:'4%'
 },
 viewbtcor2:{
-      backgroundColor:'#006eff',
       width:'70%',
       height:'70%',
       justifyContent:'center',
@@ -164,7 +170,6 @@ viewbtcor2:{
       borderRadius:20
 },
 imagebt:{
-     backgroundColor:'#006eff',
      width:25,
      height:25,
 },
@@ -174,9 +179,9 @@ textcor:{
      fontFamily:'Muli_500Medium'
 },
 botao:{
-      backgroundColor: '#006eef',
+      backgroundColor:'#006eff',
       borderRadius: 40,
-      width: '15%',
+      width: '70%',
       justifyContent: 'center',
       alignItems: 'center',
 },
@@ -302,7 +307,7 @@ tsave:{
     Bview:{
         marginLeft:'2%', 
         marginRight:'2%',
-        elevation:5
+        elevation:5,
     }
 })
 

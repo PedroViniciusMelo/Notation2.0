@@ -6,11 +6,11 @@ import db from "./SQLiteDatabse";
  */
 db.transaction((tx) => {
   //<<<<<<<<<<<<<<<<<<<<<<<< USE ISSO APENAS DURANTE OS TESTES!!! >>>>>>>>>>>>>>>>>>>>>>>
-  //tx.executeSql("DROP TABLE cars;");
+  //tx.executeSql("DROP TABLE compromisso;");
   //<<<<<<<<<<<<<<<<<<<<<<<< USE ISSO APENAS DURANTE OS TESTES!!! >>>>>>>>>>>>>>>>>>>>>>>
 
   tx.executeSql(
-    "CREATE TABLE IF NOT EXISTS cars (id INTEGER PRIMARY KEY AUTOINCREMENT, brand TEXT, model TEXT, hp INT);"
+    "CREATE TABLE IF NOT EXISTS compromisso (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, categoria TEXT, cor TEXT, descrição TEXT, data TEXT, notificar INTEGER);"
   );
 });
 
@@ -26,8 +26,8 @@ const create = (obj) => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "INSERT INTO cars (brand, model, hp) values (?, ?, ?);",
-        [obj.brand, obj.model, obj.hp],
+        "INSERT INTO compromisso (titulo, categoria, cor, descricao, data, notificar,atrasado,concluida,dataConcluida) values (?, ?, ?, ?, ?, ?, ?, ?, ?);",
+        [obj.titulo, obj.categoria, obj.cor,obj.descricao, obj.data, obj.notificar,obj.atrasado,obj.concluida,obj.dataConcluida],
         //-----------------------
         (_, { rowsAffected, insertId }) => {
           if (rowsAffected > 0) resolve(insertId);
@@ -51,8 +51,8 @@ const update = (id, obj) => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "UPDATE cars SET brand=?, model=?, hp=? WHERE id=?;",
-        [obj.brand, obj.model, obj.hp, id],
+        "UPDATE compromisso SET titulo=?, categoria=?, cor=?, descricao=?, data=?, notificar=?, atrasado=? , concluida=?, dataConcluida=? WHERE id=?;",
+        [obj.titulo, obj.categoria, obj.cor,obj.descricao, obj.data, obj.notificar,obj.atrasado,obj.concluida,obj.dataConcluida, id],
         //-----------------------
         (_, { rowsAffected }) => {
           if (rowsAffected > 0) resolve(rowsAffected);
@@ -76,7 +76,7 @@ const find = (id) => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "SELECT * FROM cars WHERE id=?;",
+        "SELECT * FROM compromisso WHERE id=?;",
         [id],
         //-----------------------
         (_, { rows }) => {
@@ -90,24 +90,24 @@ const find = (id) => {
 };
 
 /**
- * BUSCA UM REGISTRO POR MEIO DA MARCA (brand)
+ * BUSCA UM REGISTRO POR MEIO DA MARCA (titulo)
  * - Recebe a marca do carro;
  * - Retorna uma Promise:
  *  - O resultado da Promise é um array com os objetos encontrados;
  *  - Pode retornar erro (reject) caso o ID não exista ou então caso ocorra erro no SQL;
  *  - Pode retornar um array vazio caso nenhum objeto seja encontrado.
  */
-const findByBrand = (brand) => {
+const findByTitulo = (titulo) => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "SELECT * FROM cars WHERE brand LIKE ?;",
-        [brand],
+        "SELECT * FROM compromisso WHERE titulo LIKE ?;",
+        [titulo],
         //-----------------------
         (_, { rows }) => {
           if (rows.length > 0) resolve(rows._array);
-          else reject("Obj not found: brand=" + brand); // nenhum registro encontrado
+          else reject("Obj not found: titulo=" + titulo); // nenhum registro encontrado
         },
         (_, error) => reject(error) // erro interno em tx.executeSql
       );
@@ -128,7 +128,7 @@ const all = () => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "SELECT * FROM cars;",
+        "SELECT * FROM compromisso;",
         [],
         //-----------------------
         (_, { rows }) => resolve(rows._array),
@@ -150,7 +150,7 @@ const remove = (id) => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "DELETE FROM cars WHERE id=?;",
+        "DELETE FROM compromisso WHERE id=?;",
         [id],
         //-----------------------
         (_, { rowsAffected }) => {
@@ -166,7 +166,7 @@ export default {
   create,
   update,
   find,
-  findByBrand,
+  findByTitulo,
   all,
   remove,
 };
