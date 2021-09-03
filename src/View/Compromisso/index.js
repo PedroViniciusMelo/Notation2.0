@@ -1,13 +1,20 @@
 import  React, { useState} from 'react';
-import { Text, View, StyleSheet, Switch, Image, Button, TouchableOpacity, TextInput, SafeAreaView, Modal} from 'react-native';
+import { Text, View, StyleSheet, Switch, Image, Button, TouchableOpacity, TextInput, SafeAreaView, Modal,Alert} from 'react-native';
 import { ColorPicker } from 'react-native-color-picker'
 import compromissodb from '../../BancoDeDados/SQLite/Compromissodb.js'
 
 export default function Compromisso () {
+const[titulo,setTitulo]=useState('')
+const[categoria,setCategoria]=useState('')
+const[descricao,setDescricao]=useState('')
 const[ligado,setLigado]=useState(true)
 const[visivel,setVisivel]=useState(false)
-const[color,setColor]=useState()
+const[cor,setCor]=useState()
 const[ligado2,setLigado2]=useState(true)
+
+const cadastro=()=>{
+
+}
 
 function dados(IdFinal){
     compromissodb.create({titulo:titulo,categoria:categoria,cor:cor,descricao:descricao,data:date.toString(),notificar:IdFinal,atrasado:False,concluida:concluida,dataConcluida:dataConcluida})
@@ -27,10 +34,10 @@ function dados(IdFinal){
              </View>
             <View style={styles.mid}>
                 <Text style={styles.titulo}>Título</Text>
-                <TextInput style={styles.descrição} placeholder="Informe o título" onChangeText={()=>{}}/>
+                <TextInput style={styles.descrição} placeholder="Informe o título" onChangeText={(text)=>setTitulo(text)}/>
                 <Text style={styles.titulo2}>Categoria</Text>
                 <View style={styles.viewimput}>
-                    <TextInput style={styles.descrição2} placeholder="Informe a categoria" onChangeText={()=>{}}/>      
+                    <TextInput style={styles.descrição2} placeholder="Informe a categoria" onChangeText={(text)=>setCategoria(text)}/>      
                     <View style={styles.viewbtcor}>   
                     <TouchableOpacity style={styles.botao} onPress={()=>{setVisivel(true)}}>
                          <View style={styles.viewbtcor2}>       
@@ -43,7 +50,7 @@ function dados(IdFinal){
                                 >
                                  <View style={styles.colorwheel}>
                                     <ColorPicker
-                                     onColorSelected={ color => alert(`Color selected: ${color}`)}
+                                        onColorSelected={(color) => setCor(color)}
                                         defaultColor={'#006eef'}
                                         style={{flex: 1}}
                                     />
@@ -51,7 +58,7 @@ function dados(IdFinal){
                                  <View style={styles.Bview}>      
                                     <Button
                                         title="Confirmar"
-                                        onPress={(color) => setColor(color), () => {setVisivel(false)}}
+                                        onPress={() => {setVisivel(false)}}
                                     />
                                   </View>
                                 </Modal>            
@@ -63,10 +70,10 @@ function dados(IdFinal){
                 <View style={styles.textview}>
                     <Text style={styles.textdescr}>Descrição</Text><Text style={styles.textopc}>(Opcional)</Text>
                 </View> 
-                <TextInput style={styles.descrição3} placeholder="Informe a descrição" onChangeText={()=>{}} multiline={true}/>
+                <TextInput style={styles.descrição3} placeholder="Informe a descrição" onChangeText={(text)=>setDescricao(text)} multiline={true}/>
                 <View style={styles.data}>
                     <Image style={styles.imagecalendar} source={require('../../../assets/icones/icone_calendario_2.png')}/>
-                    <Text>25/07/2021 12:00</Text>
+                    <Text>25/07/2021 | 12:00</Text>
                 </View>
                 <View style={styles.containernot}> 
                     <Switch 
@@ -77,7 +84,7 @@ function dados(IdFinal){
                     />
                     <Text style={styles.textnotificar}>Notificar</Text>
                 </View>
-                    <TouchableOpacity>   
+                    <TouchableOpacity onPress={()=>cadastro()}>   
                         <View style={styles.botao2}>
                             <Image style={styles.check} source={require('../../../assets/icones/icone_check.png')}/>
                             <Text style={styles.tsave}>Salvar</Text>
