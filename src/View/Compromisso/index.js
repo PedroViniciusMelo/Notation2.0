@@ -4,14 +4,16 @@ import { ColorPicker } from 'react-native-color-picker'
 import compromissodb from '../../BancoDeDados/SQLite/Compromissodb.js'
 
 export default function Compromisso () {
-const[titulo,setTitulo]=useState('')
+
+const[titulo,setTitulo]=useState(null)
 const[categoria,setCategoria]=useState('')
+const[cor,setCor]=useState()
 const[descricao,setDescricao]=useState('')
+
+
 const[ligado,setLigado]=useState(true)
 const[visivel,setVisivel]=useState(false)
-const[cor,setCor]=useState()
 const[ligado2,setLigado2]=useState(true)
-
 const cadastro=()=>{
 
 }
@@ -22,7 +24,6 @@ function dados(IdFinal){
             exibirToast('Adicionado com sucesso')
  })
       .catch(err=>console.log(err))
-
 }
     return(       
         <SafeAreaView >
