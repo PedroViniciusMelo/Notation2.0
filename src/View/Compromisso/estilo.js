@@ -92,7 +92,7 @@ export default StyleSheet.create({
     },
     data: {
         width: '65%',
-        height: '17%',
+        height: '24%',
         borderWidth: 1,
         borderRadius: 20,
         justifyContent: 'space-evenly',
@@ -117,7 +117,7 @@ export default StyleSheet.create({
         backgroundColor: '#006EFF',
         borderRadius: 10,
         width: '45%',
-        height: '17%',
+        height: '20%',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
@@ -148,9 +148,23 @@ export default StyleSheet.create({
     },
     container2: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        height: '35%',
     },
     textview: {
         flexDirection: 'row'
+    },
+    datepicker:{
+        marginHorizontal:'2%',
+        marginVertical:'3%'
+    },
+    conteinerdatepicker:{
+        marginTop:'85%',
+        backgroundColor:'#c8c8c8',
+        height: '40%',
+        marginHorizontal:'3%',
+        justifyContent:'center',
+        borderRadius:10
+        
     }
 })

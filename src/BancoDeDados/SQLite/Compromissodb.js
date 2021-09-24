@@ -10,7 +10,7 @@ db.transaction((tx) => {
     //<<<<<<<<<<<<<<<<<<<<<<<< USE ISSO APENAS DURANTE OS TESTES!!! >>>>>>>>>>>>>>>>>>>>>>>
 
     tx.executeSql(
-        "CREATE TABLE IF NOT EXISTS compromisso (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, categoria TEXT, cor TEXT, descrição TEXT, data TEXT, notificar INTEGER);"
+        "CREATE TABLE IF NOT EXISTS compromisso (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, categoria TEXT, cor TEXT, descricao TEXT, data TEXT, notificar INTEGER, atrasado TEXT, concluida TEXT, dataConcluida TEXT);"
     );
 });
 
