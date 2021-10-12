@@ -6,7 +6,6 @@ import {useNavigation} from '@react-navigation/native';
 
 function Notas() {
     const navigation = useNavigation()
-
     return (
         <View style={estilo.nota}>
             <StatusBar backgroundColor='#006EFF'/>

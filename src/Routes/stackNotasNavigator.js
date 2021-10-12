@@ -9,10 +9,10 @@ export  default function stackNotasNavigator(){
 
     return (
         <Navigator
-            screenOptions={{
-                headerStyle: {backgroundColor: "#006EFF"},
-                headerTitleStyle: {color: "white", fontSize: 30, fontFamily: "Poppins_700Bold", padding: "26%"},
-            }}
+        screenOptions={{
+            headerStyle: {backgroundColor: "#006EFF"},
+            headerTitleStyle: {color: "white", fontSize: 30, fontFamily: "Poppins_700Bold", padding: "26%"},
+        }}
         >
             <Screen
                 name="Notas"

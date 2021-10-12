@@ -5,6 +5,7 @@ import Compromisso from "../View/Compromisso";
 import Nota from "../View/Nota";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import StackNotasNavigator from "./stackNotasNavigator";
+import StackHomeNavigator from "./stackHomeNavigator"
 
 export default function index() {
     let {Navigator, Screen} = createBottomTabNavigator()
@@ -58,7 +59,7 @@ export default function index() {
                 />
                 <Screen
                     name="Feed"
-                    component={Nota}
+                    component={StackHomeNavigator}
                     options={{
                         tabBarIcon: () => (
                             <Image

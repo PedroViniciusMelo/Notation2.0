@@ -9,16 +9,15 @@ import {
     TextInput,
     SafeAreaView,
     Modal,
-    Platform,
+    Platform
 } from 'react-native';
 import {ColorPicker} from 'react-native-color-picker'
 import Compromissodb from '../../BancoDeDados/SQLite/Compromissodb.js'
 import estilo from './estilo'
-import DateTimePicker from '@react-native-community/datetimepicker';
-
+import DateTimePicker from '@react-native-community/datetimepicker'
+import {useNavigation} from '@react-navigation/native';
 
 export default function Compromisso() {
-
     const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('datetime');
     const [show, setShow] = useState(false);
@@ -44,11 +43,9 @@ export default function Compromisso() {
     const [categoria, setCategoria] = useState()
     const [cor, setCor] = useState('#006eff')
     const [descricao, setDescricao] = useState()
-
-    const [visivel, setVisivel] = useState(false)
-    const [visivel2, setVisivel2] = useState(false)
     const [notificar, setNotificar] = useState(true)
-
+    const [visivel, setVisivel] = useState(false)
+ 
     function dados() {
         Compromissodb.create({
             titulo: titulo,
@@ -66,8 +63,7 @@ export default function Compromisso() {
             })
             .catch(err => console.log(err))
     }
-
-
+    const navigation=useNavigation();
     return (
         <SafeAreaView>
             <View style={estilo.top}>
@@ -124,7 +120,7 @@ export default function Compromisso() {
                                 setVisivel(true)
                             }}>
                             <Image style={estilo.imagebt}
-                                   source={require('../../../assets/icones/icone_eyedrop.png')}/>
+                                source={require('../../../assets/icones/icone_eyedrop.png')}/>
                         </TouchableOpacity>
                         <Text style={estilo.textcor}>COR</Text>
                     </View>
@@ -165,7 +161,7 @@ export default function Compromisso() {
                     </View>
                     <TouchableOpacity
                         style={estilo.botao2}
-                        onPress={() => dados()}>
+                        onPress={() => {dados(), navigation.navigate('Feed')}}>
                         <Image style={estilo.check} source={require('../../../assets/icones/icone_check.png')}/>
                         <Text style={estilo.tsave}>Salvar</Text>
                     </TouchableOpacity>

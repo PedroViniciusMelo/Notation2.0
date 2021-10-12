@@ -5,7 +5,7 @@ import {
     Poppins_400Regular,
     Poppins_800ExtraBold
 } from '@expo-google-fonts/poppins';
-import {Muli_500Medium, Muli_700Bold, useFonts} from '@expo-google-fonts/muli'
+import {Muli_500Medium, Muli_700Bold, Muli_800ExtraBold, useFonts} from '@expo-google-fonts/muli'
 import Routes from './src/Routes'
 
 export default function App() {
@@ -16,6 +16,7 @@ export default function App() {
         Poppins_800ExtraBold,
         Muli_500Medium,
         Muli_700Bold,
+        Muli_800ExtraBold
     });
 
     if (!fontsLoaded) {

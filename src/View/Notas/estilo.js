@@ -29,5 +29,15 @@ export default StyleSheet.create({
     btnBusca: {
         position: "absolute",
         right: 20
+    },
+    flatlist:{
+        backgroundColor:"#fff",
+        marginTop:"4%",
+        borderRadius:10,
+        padding:8    
+    },
+    flatlist2:{
+        marginHorizontal:"3%",
+        height:"80%",
     }
 });
