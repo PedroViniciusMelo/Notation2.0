@@ -34,23 +34,13 @@ hj:{
    fontFamily: 'Muli_800ExtraBold',
 },
 wrapper: {},
+
 slide1: {
    padding:20,
    backgroundColor: '#dcdcdc',
-  height:'87%',
-  borderRadius:20,
-  marginVertical:'2%',
-  marginHorizontal:'2%'
-},
-text: {
-  color: '#000',
-  fontSize: 30,
-  fontWeight: 'bold'
-},
-f1:{
-   backgroundColor:'#fff',
-   height:'20%',
-   borderRadius:10
+   height:'87%',
+   borderRadius:20,
+   marginVertical:'2%',
+   marginHorizontal:'2%'
 }
-
 })

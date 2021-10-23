@@ -6,12 +6,13 @@ import Nota from "../View/Nota";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import StackNotasNavigator from "./stackNotasNavigator";
 import StackHomeNavigator from "./stackHomeNavigator"
+import StackCompromissoNavigator from "./stackCompromissoNavigator";
 
 export default function index() {
     let {Navigator, Screen} = createBottomTabNavigator()
     return (
         <NavigationContainer>
-            <Navigator
+            <Navigator 
                 tabBarOptions={{
                     style: {
                         backgroundColor: "#007aff",
@@ -29,8 +30,7 @@ export default function index() {
                     activeTintColor: '#FFF',
                     inactiveTintColor: '#FFF',
                 }}>
-
-                <Screen
+                 <Screen
                     name="Notas"
                     component={StackNotasNavigator}
                     options={{
@@ -45,9 +45,8 @@ export default function index() {
                 />
                 <Screen
                     name="Calendário"
-                    component={Compromisso}
+                    component={StackCompromissoNavigator}
                     options={{
-
                         tabBarIcon: () => (
                             <Image
                                 style={{resizeMode: "contain", width: 20, height: 20}}

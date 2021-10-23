@@ -1,11 +1,18 @@
-import React from 'react'
-import {View,Text, TextInput,Image} from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
+import React, {useEffect, useState} from 'react'
+import {View,Text, TextInput,Image,FlatList} from 'react-native'
 import Swiper from 'react-native-swiper'
 import estilo from './estilos'
-import Compromisso from '../Compromisso/index'
+import Compromissodb from '../../BancoDeDados/SQLite/Compromissodb'
+import Editar from '../../EditarCompromisso'
 
 export default function Home() {
+   useEffect(() => {
+      Compromissodb.all()
+          .then((dados) => setDadosflatlist(dados))
+          .catch(e => console.log(e))
+   }, []);
+   const [dadosflatlist,setDadosflatlist]=useState()
+
    return(
       <View style={{backgroundColor:'#fff'}}>
          <View style={estilo.top}>
@@ -16,28 +23,24 @@ export default function Home() {
                <Image style={estilo.botaopesquisa}
                   source={require('../../../assets/icones/icone_busca.png')}/>
          </View>
-            <View style={estilo.mid}>
+         <View style={estilo.mid}>
                <Text style={estilo.hj}>Hoje</Text>
                <Swiper 
                   style={estilo.wrapper} 
                   showsButtons={true}
                >
                   <View style={estilo.slide1}>
-                     <View style={estilo.f1}>
                         <FlatList
-                           
+                           data={dadosflatlist}
+                           keyExtractor={item => item.id.toString()}
+                           renderItem={({ item }) => 
+                                 <Editar
+                                    concluida={false}
+                                    obj={item}
+                                 />}
                         />
-                        
                      </View>
-                  </View>
-                  <View style={estilo.slide1}>
-                     <Text style={estilo.text}>2</Text>
-                  </View>
-                  <View style={estilo.slide1}>
-                     <Text style={estilo.text}>3</Text>
-                  </View>
                </Swiper>
-
             </View>
       </View>
 

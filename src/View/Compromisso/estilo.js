@@ -23,7 +23,7 @@ export default StyleSheet.create({
         fontFamily: 'Muli_700Bold',
     },
     container: {
-        height: '87.5%',
+        height: '96%',
         backgroundColor: '#fff',
         elevation: 4,
         marginTop: '4%',
@@ -37,12 +37,11 @@ export default StyleSheet.create({
         fontFamily: 'Muli_700Bold'
     },
     descricao: {
-        flexGrow: 1,
         backgroundColor: '#dcdcdc',
         borderRadius: 20,
         fontSize: 12,
         padding: 10,
-        fontFamily: 'Muli_500Medium'
+        fontFamily: 'Muli_500Medium',
     },
     viewimput: {
         flexDirection: 'row',
@@ -85,13 +84,13 @@ export default StyleSheet.create({
     descricao2: {
         backgroundColor: '#dcdcdc',
         borderRadius: 20,
-        height: '35%',
+        height: '45%',
         fontSize: 12,
         padding: '3%',
         fontFamily: 'Muli_500Medium'
     },
     data: {
-        width: '65%',
+        width: '75%',
         height: '24%',
         borderWidth: 1,
         borderRadius: 20,
@@ -107,7 +106,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: '2%'
+        marginVertical:'3%'
     },
     textnotificar: {
         fontFamily: 'Muli_700Bold',
@@ -116,11 +115,12 @@ export default StyleSheet.create({
     botao2: {
         backgroundColor: '#006EFF',
         borderRadius: 10,
-        width: '45%',
-        height: '20%',
+        width: '52%',
+        height: '24%',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
+        marginBottom:'9%'
     },
     check: {
         width: 27,
@@ -149,7 +149,7 @@ export default StyleSheet.create({
     container2: {
         justifyContent: 'center',
         alignItems: 'center',
-        height: '35%',
+        height: '35%'
     },
     textview: {
         flexDirection: 'row'
@@ -165,6 +165,28 @@ export default StyleSheet.create({
         marginHorizontal:'3%',
         justifyContent:'center',
         borderRadius:10
-        
+    },
+    botoesEditar:{
+        marginBottom:'9%',
+        backgroundColor: 'green',
+        borderRadius: 10,
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        padding:8,
+        margin:2
+    },
+    editardados:{
+        backgroundColor:'#fff',
+        height:'73%'
+    },
+    descricao3:{
+        flexGrow: 1,
+        backgroundColor: '#dcdcdc',
+        borderRadius: 20,
+        fontSize: 12,
+        padding: 10,
+        fontFamily: 'Muli_500Medium',
     }
 })
