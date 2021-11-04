@@ -6,13 +6,13 @@ import Compromissodb from '../../BancoDeDados/SQLite/Compromissodb'
 import Editar from '../../EditarCompromisso'
 
 export default function Home() {
+   const [dadosflatlist,setDadosflatlist]=useState()
    useEffect(() => {
       Compromissodb.all()
           .then((dados) => setDadosflatlist(dados))
           .catch(e => console.log(e))
-   }, []);
-   const [dadosflatlist,setDadosflatlist]=useState()
-
+   }, [dadosflatlist]);
+ 
    return(
       <View style={{backgroundColor:'#fff'}}>
          <View style={estilo.top}>

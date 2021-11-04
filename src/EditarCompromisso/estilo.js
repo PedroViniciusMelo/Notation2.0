@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
    texto: {
       color: '#000',
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: 'bold'
    },
    flatlistcontainer:{
@@ -24,7 +24,7 @@ export default StyleSheet.create({
    categoria:{
       color:'#fff',
       borderRadius:20,
-      width:'45%',
+      width:'40%',
       justifyContent:'center',
       alignItems:'center'
    }
