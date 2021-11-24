@@ -10,7 +10,7 @@ import {
     SafeAreaView,
     Modal,
     Platform,
-    ToastAndroid 
+    Alert
 } from 'react-native';
 import {ColorPicker} from 'react-native-color-picker'
 import Compromissodb from '../../BancoDeDados/SQLite/Compromissodb.js'
@@ -47,6 +47,27 @@ const [cor, setCor] = useState('#006eff')
 const [descricao, setDescricao] = useState()
 const [notificar, setNotificar] = useState(true)
 const [visivel, setVisivel] = useState(false)
+
+function Verificardado(){
+    if(titulo && categoria && descricao){
+        return(
+        dados(), navigation.navigate('Feed')
+        )
+    }else{
+        Alert.alert("Insira todos os dados!")
+    }
+
+}
+function VerificardadoEditar(id){
+    if(titulo2 && categoria2 && descricao2){
+        return(
+            atualizar(id), navigation.navigate('Feed')
+        )
+    }else{
+        Alert.alert("Insira todos os dados!")
+    }
+
+}
 function Data(){
     if(date.getDate()<10 && date.getMonth()<10){
         return(
@@ -69,9 +90,16 @@ function Data(){
     }else{
         return(
             <Text>
-                {date.getDate()} / 0{date.getMonth()} / {date.getFullYear()}
+                {date.getDate()} / {date.getMonth()} / {date.getFullYear()}
             </Text>
         ) 
+    }
+}
+function tabar(){
+    if(route.params){
+        return 'existedados'
+    }else{
+        return null
     }
 }
 function EditarBtn(){
@@ -80,7 +108,7 @@ function EditarBtn(){
         <View style={{flexDirection:'row'}}>
             <TouchableOpacity
                 style={estilo.botoesEditar}
-                onPress={() => { atualizar(id), navigation.navigate('Feed')}}>
+                onPress={VerificardadoEditar}>
                 <IconConfirmar name="check-circle" color="white" size={30}/>
                 <Text style={estilo.tsave}>Concluir</Text>
             </TouchableOpacity>
@@ -96,7 +124,7 @@ function EditarBtn(){
         return(
         <TouchableOpacity
             style={estilo.botao2}
-            onPress={() => {dados(), navigation.navigate('Feed')}}>
+            onPress={Verificardado}>
             <Image style={estilo.check} source={require('../../../assets/icones/icone_check.png')}/>
             <Text style={estilo.tsave}>Salvar</Text>
         </TouchableOpacity>
@@ -122,12 +150,6 @@ function atualizar(id){
         }
     )
 }
-const Toastconcluida = () => {
-    ToastAndroid.show("Adicionado!", ToastAndroid.SHORT);
-  };
-const Toastconcluida = () => {
-    ToastAndroid.show("Adicionado!", ToastAndroid.SHORT);
-};
 function dados() {
     Compromissodb.create({
         titulo: titulo,
@@ -140,7 +162,7 @@ function dados() {
         concluida: '',
         dataConcluida: ''
     })
-    .then(() =>  Toastconcluida() )
+    .then()
     .catch(err => console.log(err))
 }
 const navigation=useNavigation();

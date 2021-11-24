@@ -7,6 +7,7 @@ import IconDeletar from 'react-native-vector-icons/AntDesign';
 import IconCalendario from 'react-native-vector-icons/FontAwesome5';
 import IconAtencao from 'react-native-vector-icons/Entypo';
 import estilo from './estilo';
+import Compromisso from '../View/Compromisso';
 
 export default function EditarCompromisso(props){
    const navigation = useNavigation()

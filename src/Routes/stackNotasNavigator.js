@@ -1,18 +1,19 @@
 import React from "react";
 import {createStackNavigator} from "@react-navigation/stack";
-import Notas from "../View/Notas";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {Feather} from "@expo/vector-icons";
 import Nota from "../View/Nota";
+import Notas from "../View/Notas";
 
 export  default function stackNotasNavigator(){
     const {Navigator, Screen} = createStackNavigator();
 
     return (
         <Navigator
-        screenOptions={{
-            headerStyle: {backgroundColor: "#006EFF"},
-            headerTitleStyle: {color: "white", fontSize: 30, fontFamily: "Poppins_700Bold", padding: "26%"},
-        }}
+             screenOptions={{
+                 headerStyle: {backgroundColor: "#006EFF"},
+                 headerTitleStyle: {color: "white", fontSize: 30, fontFamily: "Poppins_700Bold", padding: "26%"},
+         }}
         >
             <Screen
                 name="Notas"
