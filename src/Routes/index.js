@@ -3,9 +3,11 @@ import {Feather} from "@expo/vector-icons";
 import {createStackNavigator} from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 import Nota from "../View/Nota";
-import Notas from "../View/Notas";
-import Compromisso from "../View/Compromisso"
 import TabInicioNavigator from "./tabInicioNavigator";
+import stackCompromisso from "./stackCompromisso";
+import stackNotas from "./stackNotas";
+import stackHome from "./stackHome"
+import Home from "../View/Home";
 
 export default function index() {
     const {Navigator, Screen} = createStackNavigator()
@@ -16,14 +18,15 @@ export default function index() {
                     headerStyle: {backgroundColor: "#006EFF"},
                     headerTitleStyle: {color: "white", fontSize: 30, fontFamily: "Poppins_700Bold", padding: "26%"},
                 }}
-            >
-                <Screen
-                    name={'tabInicio'}
+             >
+                 <Screen
+                    name="tabinicio"
                     component={TabInicioNavigator}
-                />
-                <Screen
+                    options={{headerShown:false}}
+                 />
+                 <Screen
                     name="Compromisso"
-                    component={Compromisso}
+                    component={stackCompromisso}
                     options={{
                         headerLeft: () => (
                             <Feather
@@ -33,21 +36,34 @@ export default function index() {
                             />
                         )
                     }}
-                />
-                <Screen
+                 />
+                 <Screen
+                    name="Feed"
+                    component={stackHome}
+                    options={{
+                        headerLeft: () => (
+                            <Feather
+                                name='more-vertical'
+                                color='white'
+                                size={35}
+                            />
+                        )
+                    }}
+                 />
+                 <Screen
                     name="Notas"
-                    component={Notas}
+                    component={stackNotas}
                     options={{
                         headerLeft: () => (
                             <Feather
                                 name='more-vertical'
                                 color='white'
                                 size={35}
-                            />
-                        )
-                    }}
-                />
-                <Screen
+                             />
+                         )
+                     }}
+                 />
+                 <Screen
                     name="Nota"
                     component={Nota}
                     options={{
@@ -59,7 +75,7 @@ export default function index() {
                             />
                         )
                     }}
-                />
+                 />
             </Navigator>
         </NavigationContainer>
     )

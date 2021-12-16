@@ -188,5 +188,16 @@ export default StyleSheet.create({
         fontSize: 12,
         padding: 10,
         fontFamily: 'Muli_500Medium',
+    },
+    botoesEditar2:{
+        marginBottom:'9%',
+        backgroundColor: '#006EFF',
+        borderRadius: 10,
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        padding:8,
+        margin:2
     }
 })

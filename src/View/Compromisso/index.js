@@ -32,6 +32,7 @@ const [notificar2,setNotificar2]=useState(route.params?.notificar)
 const [date, setDate] = useState(new Date());
 const [mode, setMode] = useState('datetime');
 const [show, setShow] = useState(false);
+
 const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
@@ -48,26 +49,6 @@ const [descricao, setDescricao] = useState()
 const [notificar, setNotificar] = useState(true)
 const [visivel, setVisivel] = useState(false)
 
-function Verificardado(){
-    if(titulo && categoria && descricao){
-        return(
-        dados(), navigation.navigate('Feed')
-        )
-    }else{
-        Alert.alert("Insira todos os dados!")
-    }
-
-}
-function VerificardadoEditar(id){
-    if(titulo2 && categoria2 && descricao2){
-        return(
-            atualizar(id), navigation.navigate('Feed')
-        )
-    }else{
-        Alert.alert("Insira todos os dados!")
-    }
-
-}
 function Data(){
     if(date.getDate()<10 && date.getMonth()<10){
         return(
@@ -81,10 +62,10 @@ function Data(){
                 0{date.getDate()} / {date.getMonth()} / {date.getFullYear()}
             </Text>
         ) 
-    }else if(date.getDate()>9 && date.getMonth()<10){
+    }else if(date.getDate()>9 && date.getMonth()<9){
         return(
             <Text>
-                {date.getDate()} / 0{date.getMonth()} / {date.getFullYear()}
+                {date.getDate()} / {date.getMonth()} / {date.getFullYear()}
             </Text>
         ) 
     }else{
@@ -95,23 +76,16 @@ function Data(){
         ) 
     }
 }
-function tabar(){
-    if(route.params){
-        return 'existedados'
-    }else{
-        return null
-    }
-}
 function EditarBtn(){
     if(route.params){
         return(
         <View style={{flexDirection:'row'}}>
             <TouchableOpacity
                 style={estilo.botoesEditar}
-                onPress={VerificardadoEditar}>
+                onPress={()=>{atualizar(id), navigation.navigate('Feed')}}>
                 <IconConfirmar name="check-circle" color="white" size={30}/>
                 <Text style={estilo.tsave}>Concluir</Text>
-            </TouchableOpacity>
+                </TouchableOpacity>
             <TouchableOpacity
                 style={{...estilo.botoesEditar,...{backgroundColor:'red'}}}
                 onPress={() => {remover(id), navigation.navigate('Feed')} }>
@@ -122,13 +96,25 @@ function EditarBtn(){
         )
     }else{
         return(
-        <TouchableOpacity
-            style={estilo.botao2}
-            onPress={Verificardado}>
-            <Image style={estilo.check} source={require('../../../assets/icones/icone_check.png')}/>
-            <Text style={estilo.tsave}>Salvar</Text>
-        </TouchableOpacity>
+        <View style={{flexDirection:'row'}}>
+            <TouchableOpacity
+                style={estilo.botoesEditar2}
+                onPress={Verificardado}>
+                <Image style={estilo.check} source={require('../../../assets/icones/icone_check.png')}/>
+                <Text style={estilo.tsave}>Salvar</Text>
+            </TouchableOpacity>
+        </View>
         )
+    }
+}
+function Verificardado(){
+    if(titulo&&categoria&&descricao){
+        dados(),navigation.navigate('Feed')
+        setTitulo('')
+        setCategoria('')
+        setDescricao('')
+    }else{
+        Alert.alert("Insira todos os dados!")
     }
 }
 function remover(id){
@@ -275,13 +261,16 @@ const navigation=useNavigation();
                                 style={estilo.descricao}
                                 placeholder="Informe o título"
                                 onChangeText={text => setTitulo(text)}
+                                value={titulo}
                             />
                             <Text style={estilo.titulo}>Categoria</Text>
                             <View style={estilo.viewimput}>
                                 <TextInput
                                     style={estilo.descricao3}
                                     placeholder="Informe a categoria"
-                                    onChangeText={(text) => setCategoria(text)}/>
+                                    onChangeText={(text) => setCategoria(text)}
+                                    value={categoria}
+                                    />
                                 <View style={estilo.viewbtcor}>
                                     <TouchableOpacity
                                         style={{...estilo.botao, ...{backgroundColor: cor}}}
@@ -301,6 +290,7 @@ const navigation=useNavigation();
                             <TextInput
                                 style={estilo.descricao2}
                                 placeholder="Informe a descricao"
+                                value={descricao}
                                 onChangeText={(text) => setDescricao(text)}
                                 multiline={true}
                             />

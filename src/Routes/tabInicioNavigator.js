@@ -1,28 +1,29 @@
 import React from "react";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import Compromisso from "../View/Compromisso"
-import Notas from "../View/Notas";
 import Nota from "../View/Nota";
-import Feed from "../View/Home/index"
 import IconHome from "@expo/vector-icons/Entypo"
 import IconCalendar from "@expo/vector-icons/Entypo"
 import IconNotas from "@expo/vector-icons/FontAwesome5"
 import IconHistorico from "@expo/vector-icons/FontAwesome5"
 import IconSobre from "@expo/vector-icons/FontAwesome5"
+import stackCompromisso from "./stackCompromisso";
+import stackNotas from "./stackNotas";
+import stackHome from "./stackHome"
 
 export default function TabInicioNavigator() {
+    
     const Tab = createBottomTabNavigator();
     return (
-        <Tab.Navigator
+        <Tab.Navigator 
             taBarOptions={{
                 style: {
-                    backgroundColor: '#006EFF'
+                    backgroundColor: '#006EFF',
                 }
             }}
         >
             <Tab.Screen
                 name="Notas"
-                component={Notas}
+                component={stackNotas}         
                 options={{
                     tabBarIcon: ({color, size}) => (
                         <IconNotas name="pen-alt" color={color} size={size}/>
@@ -30,8 +31,8 @@ export default function TabInicioNavigator() {
                 }}
             />
             <Tab.Screen
-                name="Compromisso"
-                component={Compromisso}
+                name='Compromisso'
+                component={stackCompromisso}
                 options={{
                     tabBarIcon: ({color, size}) => (
                         <IconCalendar name="calendar" color={color} size={size}/>
@@ -40,7 +41,7 @@ export default function TabInicioNavigator() {
             />
             <Tab.Screen
                 name="Feed"
-                component={Feed}
+                component={stackHome}
                 options={{
                     tabBarIcon: ({color, size}) => (
                         <IconHome name="home" color={color} size={size}/>

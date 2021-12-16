@@ -26,21 +26,30 @@ botaopesquisa:{
 mid:{
    backgroundColor:'#fff',
    marginHorizontal:'2%',
-   height:'74%',
+   height:'62%',elevation:8
 },
 hj:{
    color:'#006eff',
-   fontSize:28,
+   fontSize:26,
    fontFamily: 'Muli_800ExtraBold',
 },
-wrapper: {},
-
+atividades:{
+   color:'#006eff',
+   fontSize:26,
+   fontFamily: 'Muli_800ExtraBold',
+   marginBottom:'0%',
+   backgroundColor:'#fff',
+},
 slide1: {
    padding:20,
    backgroundColor: '#dcdcdc',
-   height:'87%',
+   height:'98%',
    borderRadius:20,
-   marginVertical:'2%',
+   marginVertical:'0%',
    marginHorizontal:'2%'
+},
+bot:{
+   marginHorizontal:'2%',
+   elevation:10
 }
 })

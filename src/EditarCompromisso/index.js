@@ -7,13 +7,13 @@ import IconDeletar from 'react-native-vector-icons/AntDesign';
 import IconCalendario from 'react-native-vector-icons/FontAwesome5';
 import IconAtencao from 'react-native-vector-icons/Entypo';
 import estilo from './estilo';
-import Compromisso from '../View/Compromisso';
 
 export default function EditarCompromisso(props){
-   const navigation = useNavigation()
-   function telacompromisso(){
-      navigation.navigate('Compromisso', props.obj)
-   } 
+
+const navigation = useNavigation()
+function irCompromisso(){
+   navigation.navigate('Compromisso', props.obj)
+} 
 
 const [date, setDate] = useState(new Date(props.obj.data));
 function Data(){
@@ -38,13 +38,14 @@ function Data(){
    }else{
       return(
          <Text style={{color:'#000',marginLeft:'4%'}}>
-            {date.getDate()} / 0{date.getMonth()} / {date.getFullYear()}
+            {date.getDate()} / {date.getMonth()} / {date.getFullYear()}
          </Text>
       ) 
    }
 }
+
 return(
-      <TouchableOpacity onPress={telacompromisso}>
+      <TouchableOpacity onPress={irCompromisso}>
          <View style={estilo.flatlistcontainer}>
             <View style={estilo.flatlist}>
                <Text style={estilo.texto}>{props.obj.titulo}</Text>
@@ -60,6 +61,5 @@ return(
             </View>
          </View>
       </TouchableOpacity>
-
 )
 }

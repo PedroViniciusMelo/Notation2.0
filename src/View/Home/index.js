@@ -26,7 +26,6 @@ export default function Home() {
          <View style={estilo.mid}>
                <Text style={estilo.hj}>Hoje</Text>
                <Swiper 
-                  style={estilo.wrapper} 
                   showsButtons={true}
                >
                   <View style={estilo.slide1}>
@@ -42,7 +41,9 @@ export default function Home() {
                      </View>
                </Swiper>
             </View>
+            <View style={estilo.bot}>
+               <Text style={estilo.atividades}>Atividades</Text>
+            </View>
       </View>
-
    )
 }
