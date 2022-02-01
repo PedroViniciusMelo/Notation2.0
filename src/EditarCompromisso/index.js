@@ -7,42 +7,49 @@ import IconDeletar from 'react-native-vector-icons/AntDesign';
 import IconCalendario from 'react-native-vector-icons/FontAwesome5';
 import IconAtencao from 'react-native-vector-icons/Entypo';
 import estilo from './estilo';
-
+ 
 export default function EditarCompromisso(props){
-
 const navigation = useNavigation()
+
 function irCompromisso(){
    navigation.navigate('Compromisso', props.obj)
 } 
 
 const [date, setDate] = useState(new Date(props.obj.data));
+
+console.log(date.format())
+
 function Data(){
    if(date.getDate()<10 && date.getMonth()<10){
       return(
-         <Text style={{color:'#000',marginLeft:'5%'}}>
-            0{date.getDate()} / 0{date.getMonth()} / {date.getFullYear()}
+         <Text style={{color:'#000',marginLeft:'5%',fontSize:11}}>
+            0{date.getDate()} / 0{date.getMonth()+1} / {date.getFullYear()}
          </Text>
       )        
    }else if(date.getDate()<10 && date.getMonth()>9){
       return(
-         <Text style={{color:'#000',marginLeft:'4%'}}>
-            0{date.getDate()} / {date.getMonth()} / {date.getFullYear()}
+         <Text style={{color:'#000',marginLeft:'4%',fontSize:11}}>
+            0{date.getDate()} / {date.getMonth()+1} / {date.getFullYear()}
          </Text>
       ) 
    }else if(date.getDate()>9 && date.getMonth()<10){
       return(
-         <Text style={{color:'#000',marginLeft:'4%'}}>
-            {date.getDate()} / 0{date.getMonth()} / {date.getFullYear()}
+         <Text style={{color:'#000',marginLeft:'4%',fontSize:11}}>
+            {date.getDate()} / 0{date.getMonth()+1} / {date.getFullYear()}
          </Text>
       ) 
    }else{
       return(
-         <Text style={{color:'#000',marginLeft:'4%'}}>
-            {date.getDate()} / {date.getMonth()} / {date.getFullYear()}
+         <Text style={{color:'#000',marginLeft:'4%',fontSize:11}}>
+            {date.getDate()} / {date.getMonth()+1} / {date.getFullYear()}
          </Text>
       ) 
    }
 }
+
+// function IconeData(){
+//    if()
+// }
 
 return(
       <TouchableOpacity onPress={irCompromisso}>

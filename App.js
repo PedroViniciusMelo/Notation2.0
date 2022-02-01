@@ -2,11 +2,12 @@ import React from 'react';
 import {
     Poppins_600SemiBold,
     Poppins_700Bold,
-    Poppins_400Regular,
+    Poppins_400Regular, 
     Poppins_800ExtraBold
 } from '@expo-google-fonts/poppins';
 import {Muli_500Medium, Muli_700Bold, Muli_800ExtraBold, useFonts} from '@expo-google-fonts/muli'
 import Routes from './src/Routes'
+import AuthProvaider from './src/contexts/auth'
 
 export default function App() {
     const [fontsLoaded] = useFonts({
@@ -23,5 +24,5 @@ export default function App() {
         return null;
     }
 
-    return <Routes/>
+    return <AuthProvaider><Routes/></AuthProvaider>
 }

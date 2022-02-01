@@ -3,6 +3,7 @@ import {Feather} from "@expo/vector-icons";
 import {createStackNavigator} from "@react-navigation/stack";
 import Compromisso from "../View/Compromisso"
 import Feed from "../View/Home"
+import Header from '../filter'
 
 export default function stackHome() {
     const {Navigator, Screen} = createStackNavigator()
@@ -17,13 +18,9 @@ export default function stackHome() {
                   name="Feed"
                   component={Feed}
                   options={{
-                     headerLeft: () => (
-                        <Feather
-                            name='more-vertical'
-                            color='white'
-                            size={35}
-                        />
-                    )
+                    header: () => {
+                        return <Header/>
+                    },
                   }}
                 />
                 <Screen

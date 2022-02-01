@@ -19,6 +19,7 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import IconConfirmar from 'react-native-vector-icons/MaterialIcons';
 import IconDeletar from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
+import IconCalendario from 'react-native-vector-icons/FontAwesome5';
 
 export default function Compromisso({route}) {
 
@@ -49,29 +50,30 @@ const [descricao, setDescricao] = useState()
 const [notificar, setNotificar] = useState(true)
 const [visivel, setVisivel] = useState(false)
 
+
 function Data(){
     if(date.getDate()<10 && date.getMonth()<10){
         return(
-            <Text style={{color:'#000',marginLeft:'5%'}}>
-                0{date.getDate()} / 0{date.getMonth()} / {date.getFullYear()}
+            <Text>
+                0{date.getDate()} / 0{date.getMonth()+1} / {date.getFullYear()}
             </Text>
         )        
     }else if(date.getDate()<10 && date.getMonth()>9){
         return(
             <Text>
-                0{date.getDate()} / {date.getMonth()} / {date.getFullYear()}
+                0{date.getDate()} / {date.getMonth()+1} / {date.getFullYear()}
             </Text>
         ) 
-    }else if(date.getDate()>9 && date.getMonth()<9){
+    }else if(date.getDate()>9 && date.getMonth()<10){
         return(
             <Text>
-                {date.getDate()} / {date.getMonth()} / {date.getFullYear()}
+                {date.getDate()} / 0{date.getMonth()+1} / {date.getFullYear()}
             </Text>
         ) 
     }else{
         return(
             <Text>
-                {date.getDate()} / {date.getMonth()} / {date.getFullYear()}
+                {date.getDate()} / {date.getMonth()+1} / {date.getFullYear()}
             </Text>
         ) 
     }
@@ -298,14 +300,15 @@ const navigation=useNavigation();
                     }     
                 <View style={estilo.container2}>
                     <View style={estilo.data}>
-                        <Image
+                        {/* <Image
                             style={estilo.imagecalendar}
-                            source={require('../../../assets/icones/icone_calendario_2.png')}/>
+                            source={require('../../../assets/icones/icone_calendario_2.png')}/> */}
+                            <IconCalendario name='calendar-alt' color={'#006EFF'} size={20}/>
                         <TouchableOpacity onPress={() => showMode('date')}>      
                             <Data/>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => showMode('time')}>
-                            <Text> {date.getHours()} : {date.getMinutes()}</Text>
+                            <Text>{date.getHours()}:{date.getMinutes()}</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={estilo.containernot}>

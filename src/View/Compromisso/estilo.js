@@ -99,8 +99,8 @@ export default StyleSheet.create({
         flexDirection: 'row'
     },
     imagecalendar: {
-        width: 27,
-        height: 27
+        width: 20,
+        height: 20
     },
     containernot: {
         flexDirection: 'row',
