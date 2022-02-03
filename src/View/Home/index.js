@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react'
-import {View, Text, TextInput, Image, FlatList, KeyboardAvoidingView, Modal, Pressable, Alert} from 'react-native'
+import {View, Text, TextInput, Image, FlatList, KeyboardAvoidingView, Modal, Pressable} from 'react-native'
 import Swiper from 'react-native-swiper'
 import estilo from './estilos'
 import Compromissodb from '../../BancoDeDados/SQLite/Compromissodb'
@@ -10,25 +10,23 @@ import AdicionarListadb from '../../BancoDeDados/SQLite/addLista/AdicionarListad
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {AuthContext} from '../../contexts/auth'
+import { set } from 'react-native-reanimated'
 
-export default function Home() {
+export default function Home({route}){
    const [dadosflatlist,setDadosflatlist]=useState()
    const [dadoslist,setDadoslist]=useState()
    const [att,setAtt]=useState()
-   const [Vmodal,setVmodal]=useState(false)
-   const {modal,ViewModal,FecharModal} = useContext(AuthContext)
-
-   // useEffect(() => {
-   //    Compromissodb.all()
-   //        .then((dados) => setDadosflatlist(dados))
-   //        .catch(e => console.log(e))
-   //  }, [dadosflatlist]);
-
-   //  useEffect(() => {
-   //    AdicionarListadb.all()
-   //       .then((dados) => setDadoslist(dados))
-   //       .catch(e => console.log(e))
-   // }, [dadoslist]);
+   const {modal,FecharModal} = useContext(AuthContext)
+   useEffect(() => {
+      Compromissodb.all()
+          .then((dados) => setDadosflatlist(dados))
+          .catch(e => console.log(e))
+    }, [dadosflatlist]);
+    useEffect(() => {
+      AdicionarListadb.all()
+         .then((dados) => setDadoslist(dados))
+         .catch(e => console.log(e))
+   }, [dadoslist]);
 
     function Listadb() {
       AdicionarListadb.create({
@@ -126,7 +124,7 @@ export default function Home() {
                   />
                   <FlatList
                      data={dadoslist}
-                     keyExtractor={item=>item.id}
+                     keyExtractor={item=>item.id.toString()}
                      renderItem={({ item }) => 
                            <AddList
                               obj={item}

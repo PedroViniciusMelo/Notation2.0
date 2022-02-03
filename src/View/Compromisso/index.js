@@ -22,9 +22,8 @@ import {useNavigation} from '@react-navigation/native';
 import IconCalendario from 'react-native-vector-icons/FontAwesome5';
 
 export default function Compromisso({route}) {
-
 var id = route.params?.id
-const [data2, setData2] = useState(new Date(route.params?.data))
+const [date2, setDate2] = useState(new Date(route.params?.data))
 const [categoria2, setCategoria2] = useState(route.params?.categoria)
 const [titulo2, setTitulo2] = useState(route.params?.titulo)
 const [descricao2, setDescricao2] = useState(route.params?.descricao)
@@ -39,10 +38,12 @@ const onChange = (event, selectedDate) => {
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
 };
+
 const showMode = (currentMode) => {
     setMode(currentMode);
     setShow(true);
 };
+
 const [titulo, setTitulo] = useState()
 const [categoria, setCategoria] = useState()
 const [cor, setCor] = useState('#006eff')
@@ -50,21 +51,20 @@ const [descricao, setDescricao] = useState()
 const [notificar, setNotificar] = useState(true)
 const [visivel, setVisivel] = useState(false)
 
-
 function Data(){
-    if(date.getDate()<10 && date.getMonth()<10){
+    if(date.getDate()<10 && date.getMonth()<9){
         return(
             <Text>
                 0{date.getDate()} / 0{date.getMonth()+1} / {date.getFullYear()}
             </Text>
-        )        
-    }else if(date.getDate()<10 && date.getMonth()>9){
+        )
+    }else if(date.getDate()<10 && date.getMonth()>=9){
         return(
             <Text>
                 0{date.getDate()} / {date.getMonth()+1} / {date.getFullYear()}
             </Text>
         ) 
-    }else if(date.getDate()>9 && date.getMonth()<10){
+    }else if(date.getDate()>9 && date.getMonth()<9){
         return(
             <Text>
                 {date.getDate()} / 0{date.getMonth()+1} / {date.getFullYear()}
@@ -78,6 +78,75 @@ function Data(){
         ) 
     }
 }
+
+function DataEdicao(){
+    if(date2.getDate()<10 && date2.getMonth()<9){
+        return(
+            <Text>
+                0{date2.getDate()} / 0{date2.getMonth()+1} / {date2.getFullYear()}
+            </Text>
+        )
+    }else if(date2.getDate()<10 && date2.getMonth()>=9){
+        return(
+            <Text>
+                0{date2.getDate()} / {date2.getMonth()+1} / {date2.getFullYear()}
+            </Text>
+        ) 
+    }else if(date2.getDate()>9 && date2.getMonth()<9){
+        return(
+            <Text>
+                {date2.getDate()} / 0{date2.getMonth()+1} / {date2.getFullYear()}
+            </Text>
+        ) 
+    }else{
+        return(
+            <Text>
+                {date2.getDate()} / {date2.getMonth()+1} / {date2.getFullYear()}
+            </Text>
+        ) 
+    }
+}
+
+function Hora(){
+    if(date.getHours()<10 && date.getMinutes()<10){
+        return(
+            <Text>0{date.getHours()}:0{date.getMinutes()}</Text>
+        )
+    }else if(date.getHours()<10 && date.getMinutes()>10){
+        return(
+            <Text>0{date.getHours()}:{date.getMinutes()}</Text>
+        )
+    }else if(date.getHours()>10 && date.getMinutes()<10){
+        return(
+            <Text>{date.getHours()}:0{date.getMinutes()}</Text>
+        )
+    }else{
+        return(
+            <Text>{date.getHours()}:{date.getMinutes()}</Text>
+        )
+    }
+}
+
+function Horaedicao(){
+    if(date2.getHours()<10 && date2.getMinutes()<10){
+        return(
+            <Text>0{date2.getHours()}:0{date2.getMinutes()}</Text>
+        )
+    }else if(date2.getHours()<10 && date2.getMinutes()>10){
+        return(
+            <Text>0{date2.getHours()}:{date2.getMinutes()}</Text>
+        )
+    }else if(date2.getHours()>10 && date2.getMinutes()<10){
+        return(
+            <Text>{date2.getHours()}:0{date2.getMinutes()}</Text>
+        )
+    }else{
+        return(
+            <Text>{date2.getHours()}:{date2.getMinutes()}</Text>
+        )
+    }
+}
+
 function EditarBtn(){
     if(route.params){
         return(
@@ -300,15 +369,22 @@ const navigation=useNavigation();
                     }     
                 <View style={estilo.container2}>
                     <View style={estilo.data}>
-                        {/* <Image
-                            style={estilo.imagecalendar}
-                            source={require('../../../assets/icones/icone_calendario_2.png')}/> */}
-                            <IconCalendario name='calendar-alt' color={'#006EFF'} size={20}/>
+                        <IconCalendario name='calendar-alt' color={'#006EFF'} size={20}/>
                         <TouchableOpacity onPress={() => showMode('date')}>      
-                            <Data/>
+                            {   
+                                route.params?
+                                    <DataEdicao/>
+                                :
+                                    <Data/>
+                            }
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => showMode('time')}>
-                            <Text>{date.getHours()}:{date.getMinutes()}</Text>
+                            {
+                                route.params?
+                                    <Horaedicao/>
+                                :
+                                    <Hora/>
+                            }
                         </TouchableOpacity>
                     </View>
                     <View style={estilo.containernot}>
